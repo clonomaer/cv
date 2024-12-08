@@ -1,0 +1,14 @@
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.pdf
+*.tex.pdf
+*.tips
+*.upa
+*.upb
