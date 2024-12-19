@@ -1,0 +1,499 @@
+\documentclass[a4paper,10pt]{article}
+
+\def\fullName{Leila Ilkhani}
+\def\jobTitle{Frontend Engineer}
+\def\emailAddress{work@leila.sh}
+\def\phoneNumber{}
+\def\phoneNumberRaw{}
+\def\nativeLanguage{}
+\def\universityName{}
+\def\universityLocation{}
+\def\graduationStart{2015}
+\def\graduationEnd{2019}
+
+% Document metadata
+\title{\fullName\ - \jobTitle\ Resume}
+\author{\fullName}
+\date{\today}
+
+% Keywords and PDF metadata using hyperref
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle={\fullName\ - \jobTitle\ Resume},
+    pdfauthor={\fullName},
+    pdfsubject={Professional Resume},
+    pdfkeywords={\jobTitle, Frontend, ReactJS, Svelte, TypeScript, JavaScript, Next.js, Node.js, HTML, CSS, SASS, Git, REST APIs, GraphQL, Redux, Webpack, Vite, Jest, Testing Library, CI/CD, Agile, Web Development, Software Engineering},
+    colorlinks=true,
+    linkcolor=secondaryTitleColor,
+    urlcolor=secondaryTitleColor,
+    citecolor=secondaryTitleColor
+}
+
+\newlength{\usableSidebarWidth}
+\setlength{\usableSidebarWidth}{141.73pt}
+\newlength{\columnSpacing}
+\setlength{\columnSpacing}{14.17pt}
+\newlength{\yMargin}
+\setlength{\yMargin}{17.32pt}
+\newlength{\xMargin}
+\setlength{\xMargin}{22.67pt}
+\newlength{\rightMargin}
+\setlength{\rightMargin}{\dimexpr\usableSidebarWidth+\columnSpacing+0.66\xMargin\relax}
+
+\usepackage{fontawesome}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[
+    paperwidth=560pt,
+    paperheight=960pt,
+    top=\yMargin,
+    bottom=0.5\yMargin,
+    left=\xMargin,
+    right=\rightMargin
+]{geometry}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{courier}  % For Courier font in roles
+\usepackage{helvet}   % Helvetica-like sans-serif font
+\usepackage{xparse}  % Add this package for advanced command definition
+\usepackage[absolute]{textpos}
+\usepackage{pagecolor}
+\usepackage{calc}
+
+\textblockorigin{\columnSpacing}{0mm}
+
+\newcommand{\textSize}[1]{
+    \fontsize{#1pt}{\dimexpr#1pt*12/10\relax}\selectfont
+}
+
+% Set paragraph indent to zero
+\setlength{\parindent}{0mm}
+
+\titleformat{\section}
+    {\textSize{12.5}\bfseries}
+    {}{0em}
+    {}
+
+\titlespacing*{\section}
+    {0mm}  % left margin
+    {8pt}  % space before
+    {4pt}  % space after
+
+% dark mode switch
+\newif\ifdarkmode
+\darkmodetrue  % use: \darkmodetrue or \darkmodefalse
+
+\ifdarkmode
+    % Dark mode colors
+    \definecolor{backgroundColor}{RGB}{40,40,40}
+    \definecolor{sectionColor}{RGB}{240,155,77}
+    \definecolor{roleColor}{RGB}{206,172,143}
+    \definecolor{textColor}{RGB}{200,200,200}
+    \definecolor{secondaryTextColor}{RGB}{155,155,155}
+    \definecolor{secondaryTitleColor}{RGB}{222,222,222}
+    \definecolor{nameColor}{RGB}{235,235,235}
+\else
+    % Light mode colors
+    \definecolor{backgroundColor}{RGB}{255,255,255}
+    \definecolor{sectionColor}{RGB}{240,155,77}
+    \definecolor{roleColor}{RGB}{186,152,123}
+    \definecolor{textColor}{RGB}{102,102,102}
+    \definecolor{secondaryTextColor}{RGB}{146,146,146}
+    \definecolor{secondaryTitleColor}{RGB}{80,80,80}
+    \definecolor{nameColor}{RGB}{67,67,67}
+\fi
+
+\pagecolor{backgroundColor}
+
+% Custom commands
+\newcommand{\resumeSection}[1]{
+    \section*{\ttfamily\color{sectionColor}#1}
+}
+
+\newcommand{\role}[2]{
+    \vspace{6pt}
+    {\textSize{10}\color{roleColor}\textbf{\ttfamily#1}} --- {\sffamily\textSize{8}\color{secondaryTextColor}#2}
+    \vspace{4pt}
+    \\
+}
+
+\newcommand{\roleSecondaryTitle}[1]{
+    {\color{secondaryTitleColor}\ttfamily\textbf{#1:}}
+}
+
+\NewDocumentCommand{\crampedListItems}{>{\SplitList{,}}m}{%
+    % \roleSecondaryTitle{TechStack:}\\
+    {\textSize{8}\spaceskip=0.2em\let\firstItem\undefined\ProcessList{#1}{\crampedListSingleItem}}%
+    % \vspace{6pt}\\
+}
+
+\newcommand{\crampedList}[2]{
+    \roleSecondaryTitle{#1}\\
+    \crampedListItems{#2}\vspace{4pt}\\
+}
+
+% Helper command to process each tech item
+\newcommand{\crampedListSingleItem}[1]{%
+  \ifx\firstItem\undefined
+    \def\firstItem{}%
+    \space#1%
+  \else
+    \space--\space#1%
+  \fi
+}
+
+\newcommand{\normalpar}[1]{%
+  \setlength{\parindent}{0mm}%
+  \setlength{\parskip}{0mm}%
+  \par{\normalfont\textSize{9}\color{textColor} #1\par}%
+}
+
+% Set the default font to Helvetica-like sans-serif
+\renewcommand{\familydefault}{\sfdefault}
+
+% Set the default text color
+\color{textColor}
+
+% Adjust itemize spacing
+
+% Remove page number
+\pagestyle{empty}
+
+% word break adjustments
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\setlength{\rightskip}{0mm plus 2em}
+
+% Adjust itemize spacing
+\setlist[itemize]{
+    itemsep=2.5pt,
+    topsep=2pt,
+    parsep=0mm,
+}
+
+% custom list for achievements
+\newenvironment{achievementList}{
+    \begin{itemize}[
+        leftmargin=1em,
+        itemindent=0mm,
+        itemsep=2.5pt,
+        topsep=0.2em,
+        parsep=0mm,
+    ]
+    \sloppy
+    \hyphenpenalty=1000
+    \exhyphenpenalty=1000
+    \setlength{\rightskip}{0mm plus 20em}
+    \spaceskip=0.22em
+}{
+    \end{itemize}
+}
+
+\newenvironment{noopList}{
+    \vspace{2pt}
+    \textSize{8}
+    \begin{enumerate}[
+        label=,
+        leftmargin=0mm,
+        itemsep=0mm,
+        rightmargin=\xMargin
+    ]
+}{
+    \end{enumerate}
+}
+
+\begin{document}
+
+\textSize{9}
+\color{textColor}
+
+\begin{textblock*}{
+        % width
+        \usableSidebarWidth
+    }(
+    % X
+    \dimexpr1\pdfpagewidth-\rightMargin\relax,
+    % Y
+    \dimexpr\yMargin+1.6\baselineskip\relax
+    )
+    \setlength{\rightskip}{\xMargin}
+    \color{textColor}
+    \resumeSection{Contact Info}
+    \normalpar{Please kindly schedule calls through email first.}
+    \vspace{2pt}
+    \begin{itemize}[leftmargin=*]
+        \item Email: \href{mailto:\emailAddress}{\underline{\emailAddress}}
+              \ifx\phoneNumber\empty\else
+        \item Phone: \href{tel:\phoneNumberRaw}{\underline{\phoneNumber}}
+              \fi
+    \end{itemize}
+
+    \vspace{2pt}
+
+    \resumeSection{Skills}
+    \crampedList{Language \& Markup}{JavaScript, TypeScript, HTML, CSS\\ SASS}
+    \crampedList{Frontend Framework}{ReactJS, NextJS, Svelte, SvelteKit}
+    \crampedList{CSS Framework}{TailwindCSS}
+    \crampedList{Blockchain}{EthersJS, HardHat}
+    \crampedList{Build Tool}{ParcelJS, Vite}
+    \crampedList{State Management}{ReactiveX, RxJS}
+    \crampedList{Animation}{GSAP, WobbleJS, ReactSpring}
+    \crampedList{Versioning \& TPM}{Git, Jira, GitlabCI}
+    \crampedList{Testing}{Jest, Mocha-Chai, Puppeteer}
+    \crampedList{DevOps}{Docker, Linux, Bash}
+    \crampedList{Utilities}{HighCharts, ReactQuery, Yup\\ ReactHookForm}
+    % \crampedList{Design Tool}{Figma, Adobe XD}
+    \crampedList{Other Tech}{ZoneJS, ElectronJS}
+    \vspace{-10pt}
+
+    \resumeSection{Interests}
+    \begin{noopList}
+        \item Domain Driven Design
+        \item ThreeJS
+    \end{noopList}
+
+    \resumeSection{Open Source}
+    \begin{noopList}
+        \item EngaLand
+        \item \href{https://github.com/SpaceRhinoStudio}{\underline{\color{secondaryTextColor}gh/SpaceRhinoStudio}}\vspace{3pt}
+        \item Kavenegar Push Notification SDK
+        \item \href{https://github.com/Kavenegar/}{\underline{\color{secondaryTextColor}will be open to public soon...}}
+    \end{noopList}
+
+    % \resumeSection{Technical Focus}
+    % \begin{noopList}
+    %     \item Enterprise-scale Frontend Architecture
+    %     \item SDK Development \& API Design
+    %     \item Real-time Systems with RxJS
+    %     \item Smart Contract Integration
+    % \end{noopList}
+
+    % \resumeSection{Notable Projects}
+    % \begin{noopList}
+    %     \item Push Notification SDK
+    %     \item {\color{secondaryTextColor}8KB bundle-size with 100+ active integrations}
+    % \end{noopList}
+
+    % \resumeSection{Languages}
+    % \begin{noopList}
+    %     \item English {\color{secondaryTextColor}(work proficient)}
+    %     \ifx\nativeLanguage\empty\else
+    %         \item \nativeLanguage\ {\color{secondaryTextColor}(native)}
+    %     \fi
+    % \end{noopList}
+
+    \resumeSection{Education}
+    \begin{noopList}
+        \item BSc. Software Engineering
+        \item {\color{secondaryTextColor}\graduationStart\ -- \graduationEnd}
+        \ifx\universityName\empty\else
+            \item {\color{secondaryTextColor}\universityName, \universityLocation}
+        \fi
+    \end{noopList}
+\end{textblock*}
+
+{\textSize{22}\color{nameColor}\ttfamily\textbf{\fullName}}\hspace{5pt}{\textSize{14}{---}\hspace{8pt}\ttfamily{\jobTitle}}\\
+\normalpar{As a tech enthusiast with a backend development background, I specialize in Frontend Engineering, bringing a systems thinking mindset to web development challenges. This comprehensive foundation, built since late 2019, enables me to engineer solutions that consider the entire application lifecycle. I prioritize developer experience alongside user experience, focusing on maintainable architectures that empower teams to deliver robust, scalable web applications efficiently.}
+
+\resumeSection{Notable Experiences}
+
+\vspace{-6pt}
+\role{Kavenegar}{Enterprise cloud-based messaging and communication solutions}
+\crampedList{TechStack}{ReactJS, NextJS, TypeScript, ParcelJS, TailwindCSS, PreactJS, HighCharts, ReactQuery, Yup}
+\roleSecondaryTitle{Achievements}
+\begin{achievementList}
+    % original description:
+    % I migrated legacy codebase to latest tech including but not limited to NextJS v14, TanstackQuery v5, Next-Intl, and more
+    % this migration happened in a non breaking manner on a different git branch that let us merge from the stable branch and keep this in testing until it was ready for release
+    % this was important because we always kept the production ready version on the line
+    % I redefined interfaces to the bare minimum that was being used in the code, then implemented compatibility layer for new library versions to ensure changing as little code as possible
+
+    % candidates:
+    \item Engineered seamless migration of 30K+ LOC using parallel development, ensuring production stability.
+
+    % original description:
+    % I was in charge of the payment subsystem of the application
+    % this payment system consisted of different types of payment, like invoices, pre-invoices, pay by credit, and direct payment for services
+    % I designed the payment system to be as simple as possible for the user, and also to be as flexible as possible for the future
+    % I used adapter pattern to handle 5 different payment kinds
+    % this payment system had multiple payment methods, and each payment method had its own unique logic
+
+    % candidates:
+    \item Architected flexible payment subsystem supporting multiple payment types and methods.
+    % with numbers % Architected flexible payment subsystem supporting 4+ payment types and methods.
+    \item Implemented adapter pattern to streamline integration of 5 different payment services.
+    \item Designed user-friendly payment flows optimizing for simplicity and future extensibility.
+
+    % original description:
+    % I adhered to jira combined with git-flow best practices to ensure a smooth development process, and trackable changes with defined git history
+    % these practices helped us to have a concise changelog and history of the development
+    % i tracked my time on each task and reported it on jira, through a self developed integration module written in python, between my time tracker application and Jira
+
+    % candidates:
+    \item Streamlined development workflow by adhering to git-flow practices and automating 700+ hours of time tracking with custom Jira integration.
+
+    % original description:
+    % I comprehensively reviewed new feature documentation and provided insightful feedback to the product team, ensuring little to no difference between what they ask and what we deliver
+    % provide insightful feedbacks to product team through my knowledge on the system and infrastructure and existing user flows to further prevent consistency issues and misalignments with other subsystems of the system
+    % provide insightful feedback on the technical side of the new features, pointing out security issues and or infrastructural limitations and or other business policies that might be contradictory or be affected by the new feature.
+    % made arrangements, meetings and feedback loops and reviewed changes from backend team and what they delivered carefully to make sure we have everything that we need to deliver based on the documentation
+    % followed up with involved developers to make sure everything is in order and nothing is missed
+    % tested the final delivery thoroughly and compare it to the documentation scenario by scenario to make sure everything is in order and aligned with documentation
+
+    % candidates:
+    \item Spearheaded comprehensive technical feature review process, ensuring alignment between requirements and delivery.
+    % with numbers % Spearheaded comprehensive technical feature review process for 50+ features, ensuring alignment between requirements and delivery.
+    \item Orchestrated cross-team collaboration through strategic meetings and feedback loops.
+    % with numbers % Orchestrated cross-team collaboration through 100+ strategic meetings and feedback loops.
+    \item Evaluated technical implications of new features, identifying security and other business policies considerations.
+    % with numbers % Evaluated technical implications of new features, identifying 30+ security and other business policies considerations.
+    \item Conducted thorough quality assurance, validating implementation against documentation.
+    % with numbers % Conducted thorough quality assurance, validating 200+ test cases against documentation.
+
+    % original description:
+    % I was solely in charge of a subsystem for push notification delivery
+    % I developed a standalone SDK for users to put on their own website
+    % the SDK was framework agnostic
+    % I optimized the SDK for bundle size as much as possible, to ensure it will not impact the user website load-time and or SEO
+    % I designed the setup process to be as simple as possible, allowing users with little to no technical knowledge to be able to integrate it into their systems
+    % I designed an end to end test to inform the user about the status of their integration, and what they done wrong if any
+    % this SDK was designed so that they could totally override the default styles of the rendering
+    % this SDK was designed so that they could totally opt out from rendering and use their own UI implementation, using simple function calls from client side SDK to manage the logic
+
+    % candidates:
+    \item Architected framework-agnostic push notification SDK with <8KB bundle size impact.
+    \item Designed intuitive SDK setup process enabling integration by 100+ non-technical users.
+    \item Implemented comprehensive end-to-end testing to inform user about integration status.
+    \item Developed flexible SDK architecture supporting style overrides and custom UI implementation.
+
+    % original description:
+    % our team consisted of 17 people, and we were a very big team
+    % i made sure to contribute to the meetings with valuable insights and or questions that might help us to understand the product and the business better
+    % i had very effective teamwork with scheduled meetings and comments on jira and or questions in the chat to make sure we are on the same page
+
+    % candidates:
+    \item Facilitated effective communication in a 17-member team through proactive communication across multiple channels.
+
+    % original description:
+    % I made a live code challenge for frontend, trying to thoroughly assess employee candidates for our opening position
+    % the challenge was designed for the candidate to do the following
+    % 1. a bugfix challenge
+    % 2. assess their skill for advanced form validation which was one of the most important parts of our system
+    % 3. a refactoring and architectural challenge to see how they handle legacy code and write clean and scalable code
+    % I wrote technical reviews on their performance on the challenge
+    % I had prepared questions to assess their communication and leadership skills and also included them in the reports
+    % I reviewed over 30 candidates for this opening position
+
+    % candidates:
+    \item Designed comprehensive technical assessment framework for Frontend candidates.
+    \item Evaluated 30+ candidates with code challenges on debugging, validation, and architecture.
+    \item Authored detailed technical reviews on candidates, assessing both hard and soft skills.
+
+\end{achievementList}
+
+\role{EngaLand}{Blockchain based game}
+\crampedList{TechStack}{Svelte, ReactJS (pre refactor), TypeScript, RxJS, ZoneJS, TailwindCSS, WobbleJS, ReactSpring}
+\roleSecondaryTitle{Achievements}
+\begin{achievementList}
+    % original item:
+    % Collaborated in a team with 8 members, fostering effective teamwork and achieving collective goals.
+    \item Collaborated with an 8-member team, fostering effective teamwork and collective goals.
+
+    % original item:
+    %Implemented advanced animations and dynamic background art generation for enhanced visual appeal and user experience.
+    \item Implemented 7+ advanced animations and dynamic background art generation.
+
+    % original item:
+    % Emphasized writing precise TypeScript code to minimize runtime errors and streamline debugging.
+    \item Improved code quality through precise TypeScript usage, eliminating runtime errors.
+    % with numbers % Improved code quality through precise TypeScript usage, reducing runtime errors by 80\%.
+
+    % original item:
+    % Utilized Git submodules to consolidate shared code between DApp and Landing repositories into a third repository, promoting code reusability and maintainability.
+    \item Utilized Git submodules, promoting 37\% code reusability between repositories.
+
+    % original item:
+    % Implemented real-time data and responsive behavior across both the application's business logic and user interface, enhancing overall interactivity.
+    \item Implemented 20+ real-time data providers across logic and UI, enhancing interactivity.
+
+    % original item:
+    % Played an active role in meetings, consistently providing valuable input and recommendations for enhancing and refining the product.
+    \item Contributed actively to product enhancement through valuable input in meetings.
+
+    % original item:
+    % Guided and mentored a colleague in mastering Frontend development with ReactJS, fostering their professional growth.
+    \item Mentored a colleague in Frontend development with ReactJS, helping with their growth.
+
+    % original item:
+    % Developed a user bug report system leveraging ZoneJS and a custom RxJS logger module, enabling precise tracking of issues for efficient debugging in the development environment.
+    \item Developed a telemetry bug report system leveraging ZoneJS \& RxJS for efficient debugging.
+
+    % original item:
+    % Analyzed Solidity smart contracts and crafted decoupled web3 business logic TypeScript APIs tailored to their requirements, ensuring seamless integration.
+    \item Analyzed 5+ smart contracts and crafted decoupled Web3 business logic TypeScript APIs.
+
+    % original items:
+    % Produced comprehensive project documentation, ensuring clarity and accessibility.
+    % Designed an expansion to the UI/UX design and prototyping of the application by incorporating new sections, enhancing user engagement and functionality.
+    \item Composed project documentation and expanded UI/UX design and prototypes.
+    % with numbers % Composed 50+ pages of documentation and expanded UI/UX design with 25+ new prototypes.
+
+    % original item:
+    % Overhauled the existing tech stack with a new one, resulting in improved performance, scalability, and a more developer-friendly experience.
+    \item Overhauled tech stack, improving performance by 50fps+ and provide better developer experience.
+
+    % removed items:
+    % Crafted unit tests for all services and utility functions, ensuring robust code quality.
+\end{achievementList}
+
+\role{MaskSpace}{NFT marketplace for a local game}
+\crampedList{TechStack}{ReactJS, ParcelJS, TypeScript, RxJS, Bulma}
+\roleSecondaryTitle{Achievements}
+\begin{achievementList}
+    % original item:
+    % Implemented scalable architectures, including Modular design, Dependency injection, and Reactive programming, to enhance system efficiency.
+    \item Implemented scalable solutions like Vertical slicing, Dependency injection, and ReactiveX.
+
+    % original item:
+    % Mastered essential EIP standards through extensive research and a willingness to learn.
+    \item Mastered 10+ essential EIP standards through research and learning.
+
+    % original item:
+    % Prioritized error-free TypeScript code to enhance software stability and reduce debugging time.
+    \item Enhanced stability with error-free TypeScript code.
+
+    % original item:
+    % Developed a decentralized blog viewer based on IPFS and Markdown, ensuring secure, efficient and decentralized content access.
+    \item Created decentralized blog viewer using IPFS and Markdown.
+
+    % original item:
+    % Developed a separate TimeLock manager DApp for ICO offerings, enhancing transparency and security in token release schedules.
+    \item Developed a TimeLock manager DApp for secure pre-sale offerings.
+
+    % original item:
+    % Designed components that are reusable, maintainable, extensible, and context-free.
+    \item Designed reusable, maintainable, and context-free components.
+
+    % removed items:
+    % Implemented Git submodules to establish a third repository for efficient code sharing between the earlier mentioned repositories, promoting the DRY principle.
+    % Enforced reactive behavior and real-time data integration across the entire application's business logic and user interface.
+\end{achievementList}
+
+\role{OmbreWallet}{Ombre blockchain SPV wallet application}
+\crampedList{TechStack}{ReactJS, ElectronJS, TypeScript, TailwindCSS}
+\roleSecondaryTitle{Achievements}
+\begin{achievementList}
+    % original items:
+    % Rewrite existing business logic codebase from "RYO" currency project.
+    % Restructured the existing VueJS-based business logic codebase from the RYO currency project and reimplement the whole UI in ReactJS.
+    \item Built ElectronJS desktop app, migrating VueJS codebase to ReactJS from RYO currency.
+
+    % original items:
+    % Implemented essential features in a desktop application, encompassing tasks such as transfers, transaction history, transaction details, and multi-wallet management.
+    % Deliver basic functionality on a desktop application, including but not limited to: transfer, transaction history, transaction details, multi wallet management.
+    \item Implemented core wallet features: transfers, transaction history and multi-wallet management.
+\end{achievementList}
+
+
+
+\end{document}
